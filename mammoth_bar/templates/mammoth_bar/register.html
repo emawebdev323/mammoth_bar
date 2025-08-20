@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'mammoth_bar/css/register.css' %}">
+{% endblock css %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block content %}
+    <section class="section-register-form">
+        <div class="register-form-header-text-container">
+            <a href="{% url 'mammoth_bar:home' %}" class="register-form-brand-name">
+                맘모스 라이프
+            </a>
+            <p class="register-form-brand-name-slogan">추억은 그대로, 삶은 새롭게</p>
+        </div>
+        <form action="" method="POST" class="register-form">
+            <h2 class="register-form-name-text">회원가입 신청서</h2>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="register-form-field-container">
+                    {{ field.label_tag}}
+                    {% if field.errors %}
+                        <ul>
+                            {% for error in field.errors %}
+                                <li class="field-error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ field }}
+                    {% if field.help_text%}
+                        <div class="register-form-help-text-container">
+                            <div class="register-form-help-text-btns">
+                                <div class="register-form-help-text-show toggle-help-text-btn">
+                                    <span>도움말 보기</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="register-form-help-text-hide">
+                                    <span>도움말 숨기기</span> 
+                                    <i class="fas fa-chevron-up"></i>
+                                </div>
+                            </div>
+                            <div class="register-form-help-text">
+                                <ul class="register-form-help-text-ul">
+                                    {% for text in field.help_text %}
+                                        <li class="field-help-text">{{ text }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type='submit' class="register-form-btn">등록하기</button>
+        </form>
+    </section>
+{% endblock content %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'mammoth_bar/js/register.js' %}"></script>
+{% endblock js %}
+

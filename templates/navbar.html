@@ -1,0 +1,40 @@
+<section class="section-navbar">
+    {% comment %} Desktop view {% endcomment %}
+    <nav class="desktop-navbar">
+        <div class="desktop-brand-container">
+            <a class="desktop-brand-logo" href="{% url 'mammoth_bar:home' %}">맘모스 라이프</a>
+        </div>
+        {% with request.resolver_match.url_name as url_name%}
+            <div class="desktop-nav-links">
+                <a class="{% if url_name == 'home' %}active-link{% endif %} desktop-nav-link" href="{% url 'mammoth_bar:home' %}">홈</a>
+                <a class="{% if url_name == 'reserve' %}active-link{% endif %} desktop-nav-link" href="{% url 'mammoth_bar:reserve' %}">예약</a>
+                <a class="desktop-nav-link" href="">디렉션</a>
+                <a class="desktop-nav-link" href="{% url 'mammoth_bar:register' %}">회원가입</a>
+                <a class="desktop-nav-link" href="">문의</a>
+                <a class="desktop-nav-link" href="">소개</a>
+            </div>
+        {% endwith %}
+    </nav>
+
+    {% comment %} Mobile view {% endcomment %}
+    <nav class="mobile-navbar">
+        <div class="mobile-brand-container">
+            <a class="mobile-brand-logo" href="{% url 'mammoth_bar:home' %}">맘모스 라이프</a>
+        </div>
+        <div class="mobile-nav-links-toggle-btns">
+            <i class="fa-solid fa-bars open-nav-links"></i>
+            <i class="fa-solid fa-close close-nav-links"></i>
+        </div>
+        {% with request.resolver_match.url_name as url_name %}
+            <div class="mobile-nav-links">
+                <a class="{% if url_name == 'home' %}active-link{% endif %} mobile-nav-link" href="{% url 'mammoth_bar:home' %}">홈</a>
+                <a class="mobile-nav-link" href="{% url 'mammoth_bar:reserve' %}">예약</a>
+                <a class="mobile-nav-link" href="">디렉션</a>
+                <a class="mobile-nav-link" href="{% url 'mammoth_bar:register' %}">회원가입</a>
+                <a class="mobile-nav-link" href="">문의</a>
+                <a class="mobile-nav-link" href="">소개</a>
+            </div>
+        {% endwith %}
+    </nav>
+</section>
+

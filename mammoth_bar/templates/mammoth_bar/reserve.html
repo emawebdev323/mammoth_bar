@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Reserve
+{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'mammoth_bar/css/reserve.css' %}">
+{% endblock css %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+    <section class="section-reserve-form">
+        <div class="reserve-form-header-text-container">
+            <a href="{% url 'mammoth_bar:home' %}" class="reserve-form-brand-name">
+                맘모스 라이프
+            </a>
+            <p class="reserve-form-brand-name-slogan">추억은 그대로, 삶은 새롭게</p>
+        </div>
+        <form action="" method="POST" class="reserve-form">
+            <h2 class="reserve-form-name-text">예약 신청서</h2>
+            {% csrf_token %}
+            {% for field in form %}
+               {% if field.label != '이메일' %}
+                    <div class="reserve-form-field-container">
+                        {{ field.label_tag}}
+                        {% if field.errors %}
+                            <ul>
+                                {% for error in field.errors %}
+                                    <li class="field-error-text">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ field }}
+                        {% if field.help_text %}
+                            <div class="reserve-form-help-text-container">
+                                <div class="reserve-form-help-text-btns">
+                                    <div class="reserve-form-help-text-show toggle-help-text-btn">
+                                        <span>도움말 보기</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="reserve-form-help-text-hide">
+                                        <span>도움말 숨기기</span> 
+                                        <i class="fas fa-chevron-up"></i>
+                                    </div>
+                                </div>
+                                <div class="reserve-form-help-text">
+                                    <ul class="reserve-form-help-text-ul">
+                                        {% for text in field.help_text %}
+                                            <li class="field-help-text">{{ text }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" class="reserve-form-btn">예약하기</button>
+        </form>
+    </section>
+{% endblock content %}
+
+{% block js %}
+    <script type="text/javascript" src={% static 'mammoth_bar/js/reserve.js' %}></script>
+{% endblock js %}

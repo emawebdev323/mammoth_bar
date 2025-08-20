@@ -1,0 +1,139 @@
+.section-register-form {
+    padding: 5rem 0;
+    height: 101%;
+}
+
+.register-form-header-text-container {
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+    
+    display: grid;
+    row-gap: 0.3rem;
+    justify-content: center;
+}
+
+.register-form-brand-name {
+    font-size: 2.6rem;
+    color: var(--fc-rgb-231-0-170);
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.register-form-brand-name:hover {
+    color: var(--cta-button);
+}
+
+.register-form-brand-name-slogan {
+    font-size: 1.15rem;
+    color: var(--fc-rgb-70-70-70);
+    font-weight: 500;
+}
+
+.register-form-name-text {
+    color: var(--fc-rgb-20-20-20)
+}
+
+.register-form {
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    margin-top: 4rem;
+
+    display: grid;
+    row-gap: 1rem;
+    align-content: start;
+    align-items: start;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-rgb-200-200-200);
+}
+
+.register-form-field-container {
+    display: grid;
+    row-gap: 0.5rem;
+    align-content: start;
+    align-items: start;
+}
+
+.register-form-field-container > label {
+    color: var(--fc-rgb-10-10-10)
+}
+
+.register-form-field-container > input {
+    border: 1px solid var(--border-rgb-180-180-180);
+    padding: 0.93rem;
+    border-radius: 5px;
+    font-size: 1.03rem;
+    color: var(--fc-rgb-70-70-70)
+}
+
+/* HELP TEXT */
+.register-form-help-text-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 0.5rem;
+}
+
+.register-form-help-text-show,
+.register-form-help-text-hide {
+    cursor: pointer;
+    color: var(--fc-rgb-120-120-120);
+    font-size: 0.9rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: color 200ms ease, max-height 100ms ease, opacity 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.register-form-help-text-show > i,
+.register-form-help-text-hide > i {
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    margin-left: 0.3rem;
+}
+
+/* toggle show & hide help text btns */
+.toggle-help-text-btn {
+    max-height: 23px;
+    opacity: 1;
+}
+/* end */
+
+.register-form-help-text-show:hover,
+.register-form-help-text-hide:hover {
+    color: var(--cta-button)
+}
+
+.register-form-help-text {
+    margin-top: 0.2rem;
+}
+
+.register-form-help-text-ul {
+    max-height: 0px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 200ms ease;
+}
+
+.register-form-help-text-ul > li {
+    text-wrap: pretty;
+}
+
+.show-register-form-help-text-ul {
+    max-height: 300px;
+}
+/* END */
+
+.register-form-btn {
+    padding: 1rem;
+    background: var(--cta-button);
+    border-radius: 30px;
+    border: none;
+    color: var(--fc-rgb-255-255-255);
+    font-size: 1.1rem;
+    cursor: pointer;
+}

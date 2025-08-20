@@ -1,0 +1,208 @@
+::before,
+::after,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Background color */
+    --bgc-rgb-20-20-20: rgb(20, 20, 20);
+    --bgc-rgb-32-32-32: rgb(32, 32, 32);
+    --bgc-rgb-199-199-199:rgb(199, 199, 199);
+
+    /* Font color */
+    --fc-rgb-174-0-255: rgb(174, 0, 255);
+    --fc-rgb-231-0-170: rgb(231, 0, 170);
+    --fc-rgb-255-1-187: rgb(255, 1, 187);
+    --fc-rgb-255-255-255: rgb(255, 255, 255);
+    --fc-rgb-120-120-120: rgb(120, 120, 120);
+    --fc-rgb-70-70-70: rgb(70, 70, 70);
+    --fc-rgb-20-20-20: rgb(20, 20, 20);
+    --fc-rgb-10-10-10: rgb(10, 10, 10);
+
+    /* CTA button */
+    --cta-button: rgb(185, 0, 202);
+    --cta-button-dark: rgb(20, 20, 20);
+    --cta-button-light: rgb(255, 255, 255);
+
+    /* Background color overlay */
+    --bgc-overlay-dark: rgba(0, 0, 0, 0.904);
+    --bgc-overlay: rgba(0, 0, 0, 0.730);
+    --bgc-overlay-light: rgba(0, 0, 0, 0.5);
+
+    /* Border */
+    --border-rgb-200-200-200: rgb(200, 200, 200);
+    --border-rgb-180-180-180: rgb(180, 180, 180);
+    --border-rgb-249-187-255: rgb(249, 187, 255);
+
+    /* Warning font color */
+    --wfc-rgb-210-105-30: rgb(210, 105, 30);
+
+    /* Error font color */
+    --efc-rgb-255-0-0: rgb(255, 0, 0);
+
+    /* Underline in hover */
+    --underline-hover: rgb(185, 0, 202);
+}
+
+/* Global */
+html,body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active-link {
+    color: var(--fc-rgb-255-1-187) !important;
+    font-weight: bold !important;
+}
+
+input,
+select,
+button,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 4px solid var(--border-rgb-249-187-255);
+    border: 1px solid transparent !important;
+}
+
+.field-error-text {
+    list-style-type: disc;
+    margin-left: 1rem;
+    color: var(--efc-rgb-255-0-0);
+}
+
+.field-help-text {
+    list-style-type: disc;
+    margin-left: 1.2rem;
+    color: var(--wfc-rgb-210-105-30);
+}
+
+/* End */
+
+.section-navbar {
+    position: relative;
+    background: var(--bgc-rgb-20-20-20);
+    overflow: hidden;
+}
+
+.desktop-navbar {
+    display: none;
+}
+
+/* Mobile navbar */
+.mobile-navbar {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-brand-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--fc-rgb-255-1-187);
+}
+
+.mobile-nav-links-toggle-btns {
+    color: var(--fc-rgb-255-255-255);
+}
+
+.mobile-nav-links-toggle-btns >
+.open-nav-links,
+.close-nav-links {
+    font-size: 1.5rem;
+}
+
+.mobile-nav-links {
+    position: absolute;
+    z-index: 999;
+    top: 73px;
+    width: 0;
+    right: -100%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: grid;
+    row-gap: 2rem;
+    padding: 2rem;
+    grid-template-columns: 1fr;
+    background: var(--bgc-rgb-32-32-32);
+    opacity: 0;
+    transition: right 0.2s ease, opacity 0.2s ease;
+}
+
+.show-mobile-nav-links {
+    right: 0;
+    opacity: 1;
+    width: 50%;
+}
+
+.mobile-nav-link {
+    font-weight: 500;
+    letter-spacing: 0.04rem;
+    color: var(--fc-rgb-255-255-255);
+    font-size: 1.1rem;
+    text-align: center;
+}
+/* End */
+
+.close-nav-links {
+    display: none;
+}
+
+@media screen and (min-width:750px) {
+    .mobile-navbar {
+        display: none;
+    }
+
+    .desktop-navbar {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .desktop-brand-logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--fc-rgb-255-1-187)
+    }
+
+    .desktop-nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 1.5rem;
+    }
+
+    .desktop-nav-link {
+        color: var(--fc-rgb-255-255-255);
+        font-weight: 500;
+        letter-spacing: 0.04rem;
+    }
+}

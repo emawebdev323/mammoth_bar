@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type='text/css' href="{% static 'mammoth_bar/css/home.css' %}">
+{% endblock css %}
+
+{% block title %} 맘모스 라이프 {% endblock title %}
+
+{% block content %}
+    <div class="home-sections">
+       <section>
+            {% comment %} Desktop view {% endcomment %}
+            <div class="home-img-desktop-view">
+                <div class="home-img-text-container">
+                    <p class="home-img-text">밤이 거대해지는 곳,</p>
+                    <p class="home-img-text-brand-name">맘모스 라이프 <span>7080</span></p>
+                    <div class="home-img-buttons-container">
+                        <a class="home-img-button-register" href="{% url 'mammoth_bar:register' %}">회원가입</a>
+                        <a class="home-img-button-reserve"  href="{% url 'mammoth_bar:reserve'%}">예약하기</a>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} Mobile view {% endcomment %}
+            <div class="home-img-mobile-view">
+                <div class="home-mobile-text-container">
+                    <p class="home-mobile-img-text">밤이 거대해지는 곳,</p>
+                    <p class="home-mobile-text-brand-name">맘모스 라이프 <span>7080</span></p>
+                    <div class="home-mobile-img-buttons-container">
+                        <a class="home-mobile-img-button-register" href="{% url 'mammoth_bar:register' %}">회원가입</a>
+                        <a class="home-mobile-img-button-reserve"  href="{% url 'mammoth_bar:reserve'%}">예약하기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}
