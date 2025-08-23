@@ -1,6 +1,11 @@
 .section-register-form {
-    padding: 5rem 0;
+    padding: 3rem 0;
     height: 101%;
+}
+
+.register-form-back-home-btn-container {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .register-form-header-text-container {
