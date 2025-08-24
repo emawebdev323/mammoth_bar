@@ -62,6 +62,13 @@
 {% endblock content %}
 
 {% block js %}
+    <script>
+        {% comment %} const userIP = JSON.parse('{{ user_ip|escapejs }}') {% endcomment %}
+        console.log("{{user_ip}}")
+
+    </script>
+
+
     <script type="text/javascript" src="{% static 'mammoth_bar/js/register.js' %}"></script>
 {% endblock js %}
 

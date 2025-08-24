@@ -32,3 +32,30 @@ function handleHideHelpTextBtn() {
     registerFormHelpTextUL.classList.remove('show-register-form-help-text-ul')
     registerFormHelpTextHide.classList.remove('toggle-help-text-btn')
 }
+
+
+// Get user ip address
+const getUserIP = async() => {
+
+    // this url is just for custom ip look
+    const url1 = 'https://api.ipinfo.io/lite/8.8.8.8?token=416c3b42e5cc10'
+
+    // this url does both: custom ip lookup and current ip address
+    const url2 = 'https://ipinfo.io/8.8.8.8/json?token=416c3b42e5cc10'
+
+    try {
+        const response = await fetch(url1)
+
+        if(response.ok) {
+            const data = await response.json()
+            console.log(data)
+        }else {
+            throw new Errror(`There was an error.`)
+        }
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+getUserIP()

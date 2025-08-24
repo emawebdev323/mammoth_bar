@@ -3,12 +3,22 @@ from django.http import HttpResponse
 from .forms import RegisterForm, ReserveForm
 from .models import Register, Reserve
 
+# utils
+from utils.geo_location import get_user_ip_address
+
 def home_view(request):
     return render(request, 'mammoth_bar/home.html', {})
 
 def register_view(request):
+
+    user_ip = get_user_ip_address(request)
     form = RegisterForm(request.POST or None)
-    context = {'form': form}
+    context = {
+        'form': form,
+        'user_ip': user_ip
+    }
+
+    print(user_ip)
 
     if request.method == 'POST':
         if form.is_valid():
