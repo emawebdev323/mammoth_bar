@@ -33,29 +33,39 @@ function handleHideHelpTextBtn() {
     registerFormHelpTextHide.classList.remove('toggle-help-text-btn')
 }
 
+// ##### VALIDATE USER IP - LOCAL OR FOREIGN #####
 
-// Get user ip address
-const getUserIP = async() => {
+// === ipinfo.io urls ===
+const url1 = 'https://api.ipinfo.io/lite/8.8.8.8?token=416c3b42e5cc10'
+const url2 = 'https://ipinfo.io/8.8.8.8/json?token=416c3b42e5cc10'
+const url3 = 'https://ipinfo.io/json?token=416c3b42e5cc10'
 
-    // this url is just for custom ip look
-    const url1 = 'https://api.ipinfo.io/lite/8.8.8.8?token=416c3b42e5cc10'
-
-    // this url does both: custom ip lookup and current ip address
-    const url2 = 'https://ipinfo.io/8.8.8.8/json?token=416c3b42e5cc10'
+async function fetchUserIP() {
+    const homeURL = window.location.origin
 
     try {
-        const response = await fetch(url1)
+        const resp = await fetch(`${homeURL}/validate/user/ip`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 
-        if(response.ok) {
-            const data = await response.json()
-            console.log(data)
+        if (resp.ok) {
+            const data = await resp.json()
+            
+            if (data.ip_type != 'public') {
+                window.location.href = `${homeURL}?message=${data.message}`
+            }
+
         }else {
-            throw new Errror(`There was an error.`)
+            throw {
+
+            }
         }
 
     } catch (error) {
-        console.log(error.message)
+        
     }
 }
-
-getUserIP()
+fetchUserIP()

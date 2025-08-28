@@ -62,11 +62,18 @@
 {% endblock content %}
 
 {% block js %}
-    <script>
-        {% comment %} const userIP = JSON.parse('{{ user_ip|escapejs }}') {% endcomment %}
-        console.log("{{user_ip}}")
+    {% comment %} <script>
+        const userIP = JSON.parse("{{ user_ip|escapejs }}".replaceAll("'", '"'))
 
-    </script>
+        if (userIP.valid_ip == 'True') {
+            userIP.valid_ip = true
+        }else if (userIP.valid_ip == 'False') {
+            userIP.valid_ip = false
+        }
+
+        console.log(userIP)
+
+    </script> {% endcomment %}
 
 
     <script type="text/javascript" src="{% static 'mammoth_bar/js/register.js' %}"></script>

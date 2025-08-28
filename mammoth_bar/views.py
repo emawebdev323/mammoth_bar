@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .forms import RegisterForm, ReserveForm
 from .models import Register, Reserve
 
@@ -9,16 +9,13 @@ from utils.geo_location import get_user_ip_address
 def home_view(request):
     return render(request, 'mammoth_bar/home.html', {})
 
-def register_view(request):
-
+def validate_user_ip_view(request):
     user_ip = get_user_ip_address(request)
-    form = RegisterForm(request.POST or None)
-    context = {
-        'form': form,
-        'user_ip': user_ip
-    }
+    return JsonResponse(user_ip, safe=True, status=200)
 
-    print(user_ip)
+def register_view(request):
+    form = RegisterForm(request.POST or None)
+    context = {'form': form}
 
     if request.method == 'POST':
         if form.is_valid():
