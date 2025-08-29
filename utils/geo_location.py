@@ -1,7 +1,7 @@
-def get_user_ip_address(request):
-    remote_address = request.META.get('REMOTE_ADDR')
+def get_user_ip(request):
+    # remote_address = request.META.get('REMOTE_ADDR')
     http_x_forwared_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    # remote_address = None 
+    remote_address = '192.168.12.205' 
     # http_x_forwared_for = '8.38.149.0'
 
     context = {

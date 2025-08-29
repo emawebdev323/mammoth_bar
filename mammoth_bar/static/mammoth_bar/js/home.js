@@ -1,9 +1,9 @@
-// fetch message 
+// fetch error message 
 function fetchMessage() {
     const newURL = new URL(document.URL)
 
-    console.log(newURL.searchParams)
-
-    console.log(newURL.searchParams.get('message'))
+    if (newURL.searchParams.size) {
+        console.log(newURL.searchParams.get('message'))
+    }
 }
 fetchMessage()

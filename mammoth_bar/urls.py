@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 
 from .views import (
     home_view,
-    validate_user_ip_view,
+    fetch_user_ip_view,
     register_view,
     reserve_view,
     detail_view,
@@ -14,7 +14,7 @@ app_name = 'mammoth_bar'
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('validate/user/ip/', validate_user_ip_view, name="validate-ip"),
+    path('fetch/user/ip/', fetch_user_ip_view, name="validate-ip"),
     path('register/', register_view, name='register'),
     path('reserve/', reserve_view, name='reserve'),
     path('<str:phone_number>/detail/', detail_view, name='detail')

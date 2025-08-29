@@ -4,13 +4,13 @@ from .forms import RegisterForm, ReserveForm
 from .models import Register, Reserve
 
 # utils
-from utils.geo_location import get_user_ip_address
+from utils.geo_location import get_user_ip
 
 def home_view(request):
     return render(request, 'mammoth_bar/home.html', {})
 
-def validate_user_ip_view(request):
-    user_ip = get_user_ip_address(request)
+def fetch_user_ip_view(request):
+    user_ip = get_user_ip(request)
     return JsonResponse(user_ip, safe=True, status=200)
 
 def register_view(request):
